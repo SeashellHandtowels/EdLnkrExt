@@ -1,31 +1,23 @@
 body {
-  padding: 20px;
   margin: 0;
-  border: 2px solid grey;
+  background-color: white;
+  padding: 1em;
 }
 
-.ext-container {
+.container {
   font-size: 16px;
 }
 
-.ext-container h1 {
+.container h1 {
   white-space: nowrap;
 }
 
-.ext-container .link-actions {
-  width: 100%;
-  display: block;
+.edlnkr-links a {
+  color: rgb(98, 109, 235);
 }
 
-.link-actions div {
-  width: 48%;
-  display: inline-block;
-  text-align: center;
+.edlnkr-links a:hover {
+  color: rgb(238, 36, 201);
+  text-decoration: none;
 }
 
-.plans {
-  border-top: 1px solid gray;
-  margin-top: 10px;
-  padding: 10px;
-  text-align: center;
-}
