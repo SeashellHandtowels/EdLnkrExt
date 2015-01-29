@@ -24,7 +24,8 @@
     },
     "permissions": [
         "history",
-        "management"
+        "management",
+        "https://edlnkr.herokuapp.com/api/"
     ],
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
