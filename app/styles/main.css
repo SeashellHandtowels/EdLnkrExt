@@ -1,6 +1,7 @@
 body {
-  margin: 0;
   background-color: white;
+  margin: 0;
+  min-width: 225px;
   padding: 1em;
 }
 
@@ -12,8 +13,14 @@ body {
   white-space: nowrap;
 }
 
+.edlnkr-links {
+  margin: 5px auto;
+  text-align: center;
+}
+
 .edlnkr-links a {
   color: rgb(98, 109, 235);
+  padding: 3px;
 }
 
 .edlnkr-links a:hover {
@@ -21,3 +28,6 @@ body {
   text-decoration: none;
 }
 
+.ext-header {
+  text-align: center;
+}

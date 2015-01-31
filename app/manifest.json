@@ -25,6 +25,7 @@
     "permissions": [
       "storage",
       "cookies",
+      "tabs",
         "history",
         "management",
         "https://edlnkr.herokuapp.com/"
