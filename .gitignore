@@ -1,3 +1,4 @@
+.DS_Store
 node_modules
 temp
 .tmp
@@ -6,3 +7,4 @@ dist
 app/bower_components
 test/bower_components
 package
+curlCommand
