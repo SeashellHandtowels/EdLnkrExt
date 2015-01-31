@@ -2,9 +2,6 @@
 'use strict';
 
 console.log('\'Allo \'Allo! Popup');
-chrome.storage.sync.get("token", function(data) {
-  console.log(data);
-});
 $.ajax({
   url: 'https://edlnkr.herokuapp.com/auth/local',
   type: 'POST',
@@ -14,9 +11,14 @@ $.ajax({
     'password': 'test',
   },
   success: function(data) {
-    chrome.storage.sync.set({token: data.token});
+    chrome.cookies.set({"name":"token","url":"https://edlnkr.herokuapp.com","value": data.token},function (cookie){
+      console.log(JSON.stringify(cookie));
+      console.log(chrome.extension.lastError);
+      console.log(chrome.runtime.lastError);
+    });
+    debugger;
   },
-  error: function(data) {
+  error: function(err) {
     console.log(arguments);
   }
 });
