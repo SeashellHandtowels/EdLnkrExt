@@ -2,18 +2,16 @@
 
 angular.module('EdLnkr')
 
-.controller('MainController', function($scope) {
-  $scope.links = [
-    // need a service to get links from EdLnkr api
-    {
-      title: 'Smashing magazine',
-      url: 'http://www.smashingmagazine.com/'
-    },
-    {
-      title: 'Markticle',
-      url: 'https://markticle.com'
-    }
-  ];
+.controller('MainController', ["$scope", "$http", function($scope, $http) {
+  $scope.plans = [];
+  $http.get('https://edlnkr.herokuapp.com/api/plans')
+    .success(function(data) {
+      debugger;
+      $scope.plans = data;
+    })
+    .error(function(err) {
+      debugger;
+      console.log("hello");
+  });
 
-  $scope.plans = ['learn python', 'general', 'nodejs', 'cooking'];
-});
+}]);

@@ -8,7 +8,7 @@ $.ajax({
   dataType: 'json',
   data: {
     'email': 'test@test.com',
-    'password': 'test',
+    'password': 'test'
   },
   success: function(data) {
     chrome.cookies.set({"name":"token","url":"https://edlnkr.herokuapp.com","value": data.token},function (cookie){
@@ -16,7 +16,6 @@ $.ajax({
       console.log(chrome.extension.lastError);
       console.log(chrome.runtime.lastError);
     });
-    debugger;
   },
   error: function(err) {
     console.log(arguments);
