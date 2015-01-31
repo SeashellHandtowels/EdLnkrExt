@@ -32,7 +32,7 @@
           <form class="form col-md-12 center-block" ng-submit="addLink()" action="#" method="post">
             <div class="form-group">
               <label for="plans-dropdown">Select Your Plan</label>
-              <select name="plans-dropdown" ng-model="planId" ng-options="plan._id as plan.title for plan in plans">
+              <select name="plans-dropdown" ng-model="planId" ng-options="plan as plan.title for plan in plans">
                 <!--<option value="default">Default</option>-->
                 <!--<option ng-repeat="plan in plans" ng-value="{{plan._id}}">{{plan.title}}</option>-->
               </select>

@@ -6,10 +6,15 @@ angular.module('EdLnkr')
   $scope.plans = [];
   $scope.planId = "";
   $scope.addLink = function() {
-    var selectedUrl;
     chrome.tabs.getSelected(function(data) {
-      selectedUrl = data.url;
-      console.log(selectedUrl);
+      $scope.planId.links.push(data.url);
+      $http.put('https://edlnkr.herokuapp.com/api/plans/' + $scope.planId._id, $scope.planId)
+        .success(function(data) {
+          console.log(data);
+        })
+        .error(function(data) {
+          console.error(arguments);
+        });
     });
   };
 
