@@ -5,7 +5,8 @@ angular.module('EdLnkr')
 .controller('MainController', ['$scope', '$http', function($scope, $http) {
   $scope.plans = [];
   $scope.chosenPlan = '';
-  var url = 'http://localhost:9000/api/plans';
+  //var url = 'http://localhost:9000/api/plans';
+  var url = 'https://edlnkr.herokuapp.com/api/plans';
   $scope.addLink = function(event) {
     event.preventDefault();
     chrome.tabs.getSelected(function(data) {
