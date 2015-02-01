@@ -9,12 +9,12 @@ angular.module('EdLnkr')
   $scope.addLink = function(event) {
     event.preventDefault();
     chrome.tabs.getSelected(function(data) {
-      // TODO choose $.ajax or $http - determine which encoding is usable
+      var result = $scope.chosenPlan.links;
+      result.push({url: data.url, description: $scope.linkDescription});
       $http({
         url: url + "/" + $scope.chosenPlan._id,
         method: 'PATCH',
-        data: {url: data.url, description: $scope.linkDescription}
-        //headers: {'Content-Type': 'application/json'}
+        data: {links: result}
       })
       .success(function(data) {
         console.log(data);
