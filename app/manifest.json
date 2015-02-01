@@ -26,6 +26,7 @@
       "storage",
       "cookies",
       "tabs",
+      "http://*/*",
         "history",
         "management",
         "https://edlnkr.herokuapp.com/"

@@ -5,27 +5,33 @@ angular.module('EdLnkr')
 .controller('MainController', ["$scope", "$http", function($scope, $http) {
   $scope.plans = [];
   $scope.planId = "";
-  $scope.addLink = function() {
+  var url = "http://localhost:9000/api/plans";
+  $scope.addLink = function(event) {
+    event.preventDefault();
     chrome.tabs.getSelected(function(data) {
-      $scope.planId.links.push({url: data.url});
-      //$http({
-      //  url: 'https://edlnkr.herokuapp.com/api/plans/' + $scope.planId._id,
-      //  method: 'PUT',
-      //  data: $scope.planId,
-      //  headers: {'Content-Type': 'application/json'}
-      //})
+      var newPlan = {};
+      newPlan.links = [{url: data.url, description: "hasdkl;"}, {url: "http://www.google.com", description: "asdf"}];
+      newPlan.title = ";khladgs";
+      newPlan._id = "54c976c39590686c18722a39";
+      $.ajax({
+        url: url + "/" + newPlan._id,
+        method: 'PATCH',
+        data: JSON.stringify(newPlan)
+        //headers: {'Content-Type': 'application/json'}
+      })
       .success(function(data) {
         console.log(data);
       })
       .error(function(data) {
-        console.error(arguments);
+        console.log(arguments);
       });
     });
   };
 
-  $http.get('https://edlnkr.herokuapp.com/api/plans')
+  $http.get(url)
     .success(function(data) {
       $scope.plans = data;
+      console.log(data);
     })
     .error(function(err) {
       console.log("There was an error:");
