@@ -2,17 +2,17 @@
 
 angular.module('EdLnkr')
 
-.controller('MainController', ["$scope", "$http", function($scope, $http) {
+.controller('MainController', ['$scope', '$http', function($scope, $http) {
   $scope.plans = [];
-  $scope.chosenPlan = "";
-  var url = "http://localhost:9000/api/plans";
+  $scope.chosenPlan = '';
+  var url = 'http://localhost:9000/api/plans';
   $scope.addLink = function(event) {
     event.preventDefault();
     chrome.tabs.getSelected(function(data) {
       var result = $scope.chosenPlan.links;
       result.push({url: data.url, description: $scope.linkDescription});
       $http({
-        url: url + "/" + $scope.chosenPlan._id,
+        url: url + '/' + $scope.chosenPlan._id,
         method: 'PATCH',
         data: {links: result}
       })
@@ -20,7 +20,7 @@ angular.module('EdLnkr')
         console.log(data);
       })
       .error(function(data) {
-        console.error(arguments);
+        console.error(data);
       });
     });
   };
@@ -30,8 +30,8 @@ angular.module('EdLnkr')
       $scope.plans = data;
     })
     .error(function(err) {
-      console.log("There was an error:");
+      console.log('There was an error:');
       console.error(err);
-  });
+    });
 
 }]);
