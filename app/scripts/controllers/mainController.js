@@ -2,16 +2,36 @@
 
 angular.module('EdLnkr')
 
-.controller('MainController', ["$scope", "$http", function($scope, $http) {
+.controller('MainController', ['$scope', '$http', function($scope, $http) {
   $scope.plans = [];
-  $http.get('https://edlnkr.herokuapp.com/api/plans')
+  $scope.chosenPlan = '';
+  var url = 'http://localhost:9000/api/plans';
+  $scope.addLink = function(event) {
+    event.preventDefault();
+    chrome.tabs.getSelected(function(data) {
+      var result = $scope.chosenPlan.links;
+      result.push({url: data.url, description: $scope.linkDescription});
+      $http({
+        url: url + '/' + $scope.chosenPlan._id,
+        method: 'PATCH',
+        data: {links: result}
+      })
+      .success(function(data) {
+        console.log(data);
+      })
+      .error(function(data) {
+        console.error(data);
+      });
+    });
+  };
+
+  $http.get(url)
     .success(function(data) {
-      debugger;
       $scope.plans = data;
     })
     .error(function(err) {
-      debugger;
-      console.log("hello");
-  });
+      console.log('There was an error:');
+      console.error(err);
+    });
 
 }]);

@@ -29,13 +29,14 @@
         </section>
         <hr />
         <section class="row">
-          <form class="form col-md-12 center-block" action="#" method="post">
+          <form class="form col-md-12 center-block" ng-submit="addLink($event)" action="#" method="post">
             <div class="form-group">
               <label for="plans-dropdown">Select Your Plan</label>
-              <select name="plans-dropdown">
-                <option value="default">Default</option>
-                <option ng-repeat="plan in plans" value="{{plan._id}}">{{plan.title}}</option>
+              <select name="plans-dropdown" ng-model="chosenPlan" ng-options="plan as plan.title for plan in plans">
               </select>
+              <label>Enter a description for this link:
+                <input name="linkDescription" ng-model="linkDescription">
+              </label>
             </div>
             <div class="form-group">
               <input class="btn btn-primary btn-block" type="submit" value="Save" />
