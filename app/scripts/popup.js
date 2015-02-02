@@ -1,6 +1,12 @@
 
 'use strict';
-//
+// This code successfully authenticates the extension.
+// It acquires a token from https://edlnkr.herokuapp.com and saves it as a cookie.
+// The Angular interceptor is set up to use this token for all communication with
+// with the server.
+// The code is disabled because the api does not require authentication, so this
+// extra layer was unnecessary.
+
 //$.ajax({
 //  url: 'https://edlnkr.herokuapp.com/auth/local',
 //  type: 'POST',
