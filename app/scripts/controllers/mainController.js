@@ -5,17 +5,16 @@ angular.module('EdLnkr')
 .controller('MainController', ['$scope', '$http', function($scope, $http) {
   $scope.plans = [];
   $scope.chosenPlan = '';
-  //var url = 'http://localhost:9000/api/plans';
-  var url = 'https://edlnkr.herokuapp.com/api/plans';
+  var url = 'http://localhost:9000/api/plans';
+  // var url = 'https://edlnkr.herokuapp.com/api/plans';
   $scope.addLink = function(event) {
     event.preventDefault();
     chrome.tabs.getSelected(function(data) {
-      var result = $scope.chosenPlan.links;
-      result.push({url: data.url, description: $scope.linkDescription});
+      $scope.chosenPlan.links.push({url: data.url, description: $scope.linkDescription});
       $http({
         url: url + '/' + $scope.chosenPlan._id,
         method: 'PATCH',
-        data: {links: result}
+        data: $scope.chosenPlan
       })
       .success(function(data) {
         console.log(data);
