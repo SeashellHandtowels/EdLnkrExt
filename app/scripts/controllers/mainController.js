@@ -17,7 +17,7 @@ angular.module('EdLnkr')
         data: $scope.chosenPlan
       })
       .success(function(data) {
-        console.log(data);
+        alert('Link saved');
       })
       .error(function(data) {
         console.error(data);
