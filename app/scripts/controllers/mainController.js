@@ -5,8 +5,10 @@ angular.module('EdLnkr')
 .controller('MainController', ['$scope', '$http', function($scope, $http) {
   $scope.plans = [];
   $scope.chosenPlan = '';
+  // To test this extension with a local instance of EdLnkr, use the following url.
   //var url = 'http://localhost:9000/api/plans';
   var url = 'https://edlnkr.herokuapp.com/api/plans';
+
   $scope.addLink = function(event) {
     event.preventDefault();
     chrome.tabs.getSelected(function(data) {
@@ -18,7 +20,7 @@ angular.module('EdLnkr')
         data: {links: result}
       })
       .success(function(data) {
-        console.log(data);
+        alert('Link saved');
       })
       .error(function(data) {
         console.error(data);
