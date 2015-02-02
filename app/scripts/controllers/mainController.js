@@ -17,16 +17,17 @@ angular.module('EdLnkr')
         method: 'PATCH',
         data: $scope.chosenPlan
       })
-      .success(function(data) {
+      .success(function(message) {
         window.close();
-        chrome.notifications.create("msg", {type: "basic", title: "title", message: "Link successfully added.", iconUrl: "images/icon-38.png"}, function() {
+        var message = "The link, " + data.url + ", was successfully saved to the plan, " + $scope.chosenPlan.title + ".";
+        chrome.notifications.create("msg", {type: "basic", title: "Success!", message: message, iconUrl: "images/icon-38.png"}, function() {
           console.log(arguments);
         });
       })
       .error(function(data) {
         console.error(data);
         window.close();
-        chrome.notifications.create("err", {type: "basic", title: "title", message: "Sorry.  There was an error.", iconUrl: "images/icon-38.png"}, function() {
+        chrome.notifications.create("err", {type: "basic", title: "Error!", message: "Uh-oh.  Something went wrong.", iconUrl: "images/icon-38.png"}, function() {
           console.log(arguments);
         });
       });
