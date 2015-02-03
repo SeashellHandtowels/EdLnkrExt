@@ -34,6 +34,15 @@
               <label for="plans-dropdown">Select Your Plan</label>
               <select name="plans-dropdown" ng-model="chosenPlan" ng-options="plan as plan.title for plan in plans">
               </select>
+              <div ng-hide="chosenPlan">
+                -- OR --
+                <label>Enter the name of a new plan:
+                  <input name="newPlan" ng-model="newPlan">
+                </label>
+                <label>Enter the synopsis for this plan:
+                  <input name="newSynopsis" ng-model="newSynopsis">
+                </label>
+              </div>
               <label>Enter a description for this link:
                 <input name="linkDescription" ng-model="linkDescription">
               </label>
